@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import useChatStore from '../ChatStore';
 
@@ -16,13 +16,16 @@ export default function MessageInput() {
     const setCurrentMessage = useChatStore((state) => state.setCurrentMessage);
 
     async function getAIresponse(prompt) {
-        const response = await fetch('http://127.0.0.1:8000/responses', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ text: prompt }),
-        });
+        const response = await fetch(
+            'https://hydrocephalusgpt.onrender.com/responses',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ text: prompt }),
+            }
+        );
 
         const data = await response.json();
         return data.answer;
