@@ -32,7 +32,7 @@ async def AIresponse(prompt: Prompt):
 		return genai.models.generate_text(
 			model='gemini-2.5-flash', 
 			prompt=prompt.text,
-			temperatue=0.0,
+			temperature=0.0,
 			max_output_tokens=512
 		)
 	response = await run_in_threadpool(generate)
