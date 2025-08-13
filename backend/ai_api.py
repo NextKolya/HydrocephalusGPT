@@ -6,8 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 import os 
 from dotenv import load_dotenv
 
-from google import genai
-from google.genai import types
+import google.generativeai as genai
+from google.generativeai import types
 
 load_dotenv()
 
