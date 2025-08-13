@@ -10,7 +10,6 @@ import google.generativeai as genai
 
 load_dotenv()
 api_key = os.getenv('gemini_api_key')
-genai.configure(api_key)
 if not api_key: 
 	raise RuntimeError('Gemini api key is not defined')
 genai.configure(api_key=api_key)
