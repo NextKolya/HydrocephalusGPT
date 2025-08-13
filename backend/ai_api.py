@@ -7,14 +7,13 @@ import os
 from dotenv import load_dotenv
 
 import google.generativeai as genai
-from google.generativeai import types
 
 load_dotenv()
-
 api_key = os.getenv('gemini_api_key')
+genai.configure(api_key)
 if not api_key: 
 	raise RuntimeError('Gemini api key is not defined')
-client = genai.Client(api_key=api_key)
+# client = genai.Client(api_key=api_key)
 
 class Prompt(BaseModel):
 	text: str
@@ -31,11 +30,11 @@ AI_responses.add_middleware(
 @AI_responses.post('/responses')
 async def AIresponse(prompt: Prompt):
 	def generate():
-		return client.models.generate_content(
-			model='gemini-2.5-flash', contents=prompt.text,
-			config=types.GenerateContentConfig(
-				thinking_config=types.ThinkingConfig(thinking_budget=0)
-			),
+		return genai.models.generate_text(
+			model='gemini-2.5-flash', 
+			prompt=prompt.text,
+			temperatue=0.0,
+			max_output_tokens=512
 		)
 	response = await run_in_threadpool(generate)
 	return {"answer": response.text or "Error with generating answer"}
