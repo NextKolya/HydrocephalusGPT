@@ -1,0 +1,99 @@
+.message-input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+
+    width: 100%;
+    height: 140px;
+}
+.message-input {
+    position: relative;
+    width: 100%;
+    max-width: 808px;
+}
+.message-input > input {
+    width: 100%;
+    max-width: 808px;
+    height: 64px;
+    padding: 12px;
+    padding-left: 56px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 60px;
+    box-sizing: border-box;
+    outline: none;
+
+    box-shadow: 0px 4px 8px -2px rgba(23, 23, 23, 0.1),
+        0px 2px 4px -2px rgba(23, 23, 23, 0.06);
+
+    /* TEXT */
+
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.007em;
+    color: #475569;
+}
+.message-input-container > span {
+    width: 808px;
+    height: 20px;
+
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: -0.006em;
+
+    color: #94a3b8;
+}
+.clip-icon {
+    position: absolute;
+    bottom: 21.87px;
+    left: 22.62px;
+
+    z-index: 10;
+
+    cursor: pointer;
+}
+
+.send-buttons-container {
+    display: flex;
+    gap: 4px;
+
+    position: absolute;
+    right: 12px;
+    top: 12px;
+
+    width: 84px;
+    height: 40px;
+}
+.send-buttons-container > button {
+    all: unset;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+.send-button {
+    background-color: #4f46e5 !important;
+}
+.send-button-disabled {
+    opacity: 60% !important;
+    cursor: default !important;
+}

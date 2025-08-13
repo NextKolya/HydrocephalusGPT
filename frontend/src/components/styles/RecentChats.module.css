@@ -1,0 +1,121 @@
+.recent-chats {
+    flex: 1;
+}
+
+.title-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 48px;
+    padding: 16px 24px 8px 24px;
+    box-sizing: border-box;
+
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.008em;
+    color: #1e293b;
+}
+.title-block > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.title-block img:nth-of-type(1) {
+    display: block;
+
+    width: 26px;
+    height: 26px;
+
+    cursor: pointer;
+}
+.title-block img:nth-of-type(2) {
+    display: block;
+
+    width: 15.38px;
+    height: 8.13px;
+    padding-top: 2px;
+
+    cursor: pointer;
+}
+
+.recent-chats-container {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+.recent-chat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 54px;
+    padding: 17px 24px;
+    box-sizing: border-box;
+
+    background-color: unset;
+
+    border: unset;
+    outline: none;
+
+    transition: background-color 0.2s ease;
+
+    cursor: pointer;
+}
+.recent-chat > input {
+    background-color: unset;
+    border: unset;
+    outline: unset;
+}
+.recent-chat-title {
+    max-width: 240px;
+
+    text-align: start;
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.007em;
+    color: #1e293b;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.recent-chat-time {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.006em;
+    color: #94a3b8;
+}
+
+.recent-chat-active {
+    background-color: #eef2ff;
+}
+.edit-chat-icons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+
+    width: 88px;
+    height: 24px;
+}
+.active-sideline {
+    position: absolute;
+
+    width: 4px;
+
+    background-color: #4f46e5;
+
+    transition: top 0.1s ease;
+}

@@ -1,0 +1,98 @@
+.navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-width: 80px;
+    height: 100vh;
+    box-sizing: border-box;
+
+    border-right: 1px solid #e2e8f0;
+}
+
+.logo {
+    position: relative;
+
+    margin: auto;
+    width: 32px;
+    height: 32px;
+}
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 12px;
+}
+.logo-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.top-container {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 24px;
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 48px;
+}
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    margin-top: 32px;
+}
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 48px;
+    height: 48px;
+
+    transition: background-color 0.2s ease;
+}
+.active-button {
+    background-color: #f8fafc;
+    border-radius: 50%;
+}
+.button img {
+    width: 18.75px;
+    height: 19.5px;
+}
+
+.bot-container {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 16px;
+
+    margin: auto;
+    margin-bottom: 24px;
+
+    width: 48px;
+    height: 112px;
+}
+.settings-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 48px;
+    height: 48px;
+
+    cursor: pointer;
+}
+.settings-icon {
+    width: 21.75px;
+    height: 20.25px;
+}
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+}

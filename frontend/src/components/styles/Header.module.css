@@ -1,0 +1,115 @@
+.header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100%;
+    min-height: 88px;
+    padding: 0 24px;
+    box-sizing: border-box;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+.title-block {
+    width: 317.33px;
+    height: 38px;
+}
+.title-block > span {
+    width: 194px;
+    height: 38px;
+
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 30px;
+    line-height: 38px;
+    letter-spacing: -0.013em;
+
+    color: #1e293b;
+}
+
+.theme-block {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    width: 317.33px;
+    height: 40px;
+}
+.theme-block > button {
+    all: unset;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid #c8d5e1;
+    border-radius: 50%;
+
+    box-sizing: border-box;
+
+    transition: background-color 0.2s ease;
+
+    cursor: pointer;
+}
+.theme-button-active {
+    background-color: #eef2ff !important;
+}
+.light-theme-icon {
+    width: 22.5px;
+    height: 22.5px;
+}
+.dark-theme-icon {
+    width: 19.87px;
+    height: 19.87px;
+}
+
+.tools-block {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+
+    width: 317.33px;
+    height: 40px;
+}
+.tools-block > button {
+    all: unset;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid #c8d5e1;
+    border-radius: 50%;
+    box-sizing: border-box;
+
+    cursor: pointer;
+}
+.download-button {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 8px !important;
+
+    width: 161px !important;
+    border-radius: 60px !important;
+}
+.download-button > span {
+    width: 101px;
+    height: 20px;
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.006em;
+
+    color: #475569;
+
+    display: block;
+}
