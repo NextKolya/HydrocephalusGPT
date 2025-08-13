@@ -13,7 +13,7 @@ api_key = os.getenv('gemini_api_key')
 genai.configure(api_key)
 if not api_key: 
 	raise RuntimeError('Gemini api key is not defined')
-# client = genai.Client(api_key=api_key)
+genai.configure(api_key=api_key)
 
 class Prompt(BaseModel):
 	text: str
