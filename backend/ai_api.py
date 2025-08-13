@@ -20,8 +20,8 @@ class Prompt(BaseModel):
 AI_responses = FastAPI()
 AI_responses.add_middleware(
 	CORSMiddleware,
-	allow_origins=["http://localhost:5174"], 
-    allow_credentials=True,
+	allow_origins=["*"], 
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
