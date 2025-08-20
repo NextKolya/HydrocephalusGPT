@@ -7,6 +7,7 @@ import os
 from dotenv import load_dotenv
 
 import google.generativeai as genai
+from google.genai import types
 
 load_dotenv()
 api_key = os.getenv('gemini_api_key')
@@ -29,13 +30,17 @@ AI_responses.add_middleware(
 @AI_responses.post('/responses')
 async def AIresponse(prompt: Prompt):
 	def generate():
-		return genai.models.generate_text(
-			model='gemini-2.5-flash', 
+		return genai.generate_text(
+			model="gemini-2.5-flash",
 			prompt=prompt.text,
+			max_output_tokens=512,
 			temperature=0.0,
-			max_output_tokens=512
 		)
-	response = await run_in_threadpool(generate)
-	return {"answer": response.text or "Error with generating answer"}
-
+		
+	try:
+		response = await run_in_threadpool(generate)
+		return {"answer": response.output_text or "Error with generating answer"}
+	except Exception as error:
+		print("AI response ERROR: ", error)
+		return{"answer": f"Error: {error}"}
 

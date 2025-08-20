@@ -16,20 +16,21 @@ export default function MessageInput() {
     const setCurrentMessage = useChatStore((state) => state.setCurrentMessage);
 
     async function getAIresponse(prompt) {
-        try {
-            const response = await fetch(
-                'https://hydrocephalusgpt.onrender.com/responses',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ text: prompt }),
-                }
-            );
+        const local_server = 'http://localhost:3000/responses';
+        const render_com_server =
+            'https://hydrocephalusgpt.onrender.com/responses';
 
-            const data = await response.json();
-            return data.answer;
+        try {
+            const response = await fetch(local_server, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ prompt: prompt }),
+            });
+
+            const aiAnswer = await response.json();
+            return aiAnswer.answer;
         } catch (error) {
             console.error('Fetch AI response error: ', error);
             return 'Error connecting to AI api server';
