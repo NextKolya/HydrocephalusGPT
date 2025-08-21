@@ -16,7 +16,11 @@ app.post('/responses', async (req, res) => {
     try {
         const response = await ai.models.generateContent({
             model: 'gemini-2.5-flash',
-            contents: `Answer with Markdown, without HTML. All code blocks wrtie with language ``python. ${req.body.prompt}`,
+            contents: `Answer with Markdown, without HTML. Always use fenced code blocks with a language, for example:
+                \`\`\`python
+                print("Hello, world!")
+                \`\`\`
+                Now answer the question:\n ${req.body.prompt}`,
             config: {
                 thinkingConfig: {
                     thinkingBudget: 0,
