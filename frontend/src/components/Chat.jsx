@@ -13,7 +13,7 @@ export default function Chat() {
     const currentChatId = useChatStore((state) => state.currentChatId);
     const currentChat = chats.find((chat) => chat.id === currentChatId);
 
-    const now = new Date();
+    // const now = new Date();
 
     return (
         <>
@@ -37,7 +37,8 @@ export default function Chat() {
                                     <span
                                         className={chatStyles['question-time']}
                                     >
-                                        {now.getHours()}:{now.getMinutes()}
+                                        {/* {now.getHours()}:{now.getMinutes()} */}
+                                        {message.messageTime}
                                     </span>
                                 </div>
                             </div>
@@ -88,7 +89,8 @@ export default function Chat() {
                                     </ReactMarkdown>
 
                                     <span className={chatStyles['answer-time']}>
-                                        {now.getHours()}:{now.getMinutes()}
+                                        {/* {now.getHours()}:{now.getMinutes()} */}
+                                        {message.messageTime}
                                     </span>
                                 </div>
                             </div>

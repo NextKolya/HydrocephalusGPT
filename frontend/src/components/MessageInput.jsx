@@ -40,10 +40,12 @@ export default function MessageInput() {
     async function sendMessage() {
         if (!currentChatId || !currentChat?.id || !question) return;
 
+        const now = new Date();
         const newMessage = {
             id: crypto.randomUUID(),
             question: question,
             answer: 'generating',
+            messageTime: `${now.getHours()}:${now.getMinutes()}`,
         };
 
         addMessage(currentChat.id, newMessage);
