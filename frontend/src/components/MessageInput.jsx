@@ -21,7 +21,7 @@ export default function MessageInput() {
             'https://hydrocephalusgpt.onrender.com/responses';
 
         try {
-            const response = await fetch(local_server, {
+            const response = await fetch(render_com_server, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -16,7 +16,7 @@ app.post('/responses', async (req, res) => {
     try {
         const response = await ai.models.generateContent({
             model: 'gemini-2.5-flash',
-            contents: req.body.prompt,
+            contents: `Answer with Markdown, without HTML. ${req.body.prompt}`,
             config: {
                 thinkingConfig: {
                     thinkingBudget: 0,

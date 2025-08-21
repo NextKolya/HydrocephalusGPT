@@ -46,7 +46,7 @@ export default function Chat() {
                                     <span>RG</span>
                                 </div>
                                 <div className={chatStyles['answer-content']}>
-                                    <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                                    <ReactMarkdown>
                                         {message.answer}
                                     </ReactMarkdown>
 
