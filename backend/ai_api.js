@@ -23,7 +23,8 @@ app.post('/responses', async (req, res) => {
                 },
             },
         });
-        res.send({ answer: response.text || 'Error with generating answer' });
+        const text = response.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        res.send({ answer: text || 'Error with generating answer' });
     } catch (error) {
         console.error('Error with generating AI response: ', error);
     }
