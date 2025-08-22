@@ -19,8 +19,8 @@ export default function Sidebar() {
                     </div>
 
                     <div className={sidebar['description-container']}>
-                        <span>k85</span>
-                        <span>205 Tokens Left</span>
+                        <span>user</span>
+                        <span>Infinity Tokens Left</span>
                     </div>
                 </div>
             </div>
