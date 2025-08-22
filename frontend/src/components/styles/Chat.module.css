@@ -58,14 +58,14 @@
 }
 .question-content {
     background-color: #4f46e5;
-    color: white;
+    color: var(--question-text-color);
 }
 .answer-content {
-    background-color: #ffffff;
+    background-color: var(--bg-color);
 
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--border-color);
 
-    color: #1e293b;
+    color: var(--answer-text-color);
 
     transition: width 0.2s ease, height 0.2s ease;
 }
@@ -113,10 +113,10 @@
     letter-spacing: -0.005em;
 }
 .question-time {
-    color: #a5b4fc;
+    color: var(--question-muted-color);
 }
 .answer-time {
-    color: #475569;
+    color: var(--muted-text-color);
 }
 
 .question-avatar {
@@ -141,7 +141,7 @@
 
     border-radius: 50%;
 
-    background-color: #eef2ff;
+    background-color: var(--ai-avatar-bg);
 }
 .answer-avatar > span {
     width: 40px;

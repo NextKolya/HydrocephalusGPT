@@ -7,7 +7,7 @@
     height: 100vh;
     box-sizing: border-box;
 
-    border-right: 1px solid #e2e8f0;
+    border-right: 1px solid var(--border-color);
 }
 
 .logo {
@@ -57,7 +57,7 @@
     transition: background-color 0.2s ease;
 }
 .active-button {
-    background-color: #f8fafc;
+    background-color: var(--navbar-active-btn-bg);
     border-radius: 50%;
 }
 .button img {

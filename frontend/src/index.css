@@ -1,11 +1,9 @@
-html,
-body,
-#root {
+body {
     height: 100%;
     max-height: 100vh;
     margin: 0;
 
-    background-color: #ffffff;
+    background-color: var(--bg-color);
 }
 
 @font-face {
@@ -25,5 +23,55 @@ body,
 
     min-width: 700px;
 
-    background-color: #f8fafc;
+    background-color: var(--main-content-bg-color);
+}
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #1e293b;
+    --muted-text-color: #475569;
+    --border-color: #e2e8f0;
+    --active-btn-bg: #eef2ff;
+
+    --navbar-active-btn-bg: #f8fafc;
+
+    --header-btn-border: #c8d5e1;
+    --theme-active-btn-border: #c8d5e1;
+
+    --main-content-bg-color: #f8fafc;
+    --input-border-color: #cbd5e1;
+    --ai-avatar-bg: #eef2ff;
+
+    --question-text-color: #ffffff;
+    --qestion-muted-color: #475569;
+
+    --answer-text-color: #1e293b;
+    --answer-border-color: ;
+}
+
+.dark {
+    --bg-color: #121212;
+    --text-color: #e2eeff;
+    --muted-text-color: #aab9d0;
+    --border-color: #434548;
+    --active-btn-bg: #21252e;
+
+    --navbar-active-btn-bg: #1e1f21;
+
+    --header-btn-border: #333639;
+    --theme-active-btn-border: #7c848c;
+
+    --main-content-bg-color: #1e1f21;
+    --input-border-color: #333539;
+    --ai-avatar-bg: #21252e;
+
+    --question-text-color: #fffffb;
+    --question-muted-color: #a5b4fc;
+
+    --answer-text-color: #f8f4f8;
+    --answer-border-color: #757678;
+}
+
+* {
+    transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
 }

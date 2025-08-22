@@ -21,7 +21,7 @@
     padding: 0 24px;
     box-sizing: border-box;
 
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .profile-description {
@@ -57,7 +57,7 @@
     font-size: 16px;
     line-height: 22px;
     letter-spacing: -0.007em;
-    color: #1e293b;
+    color: var(--text-color);
 }
 .description-container span:nth-child(2) {
     font-family: 'Plus Jakarta Sans';
@@ -65,14 +65,14 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 160%;
-    color: #475569;
+    color: var(--muted-text-color);
 }
 
 .tools {
     width: 100%;
     height: 352px;
 
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--border-color);
 }
 .tools-buttons {
     position: relative;
@@ -81,7 +81,7 @@
     min-height: 48px;
     box-sizing: border-box;
 
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--border-color);
 }
 .tools-buttons > button {
     all: unset;
@@ -93,7 +93,7 @@
     padding: 13px 16px;
     box-sizing: border-box;
 
-    border-bottom: 2px solid #e2e8f0;
+    border-bottom: 2px solid var(--border-color);
 
     /* Text */
     font-family: 'Plus Jakarta Sans';
@@ -102,14 +102,14 @@
     font-size: 16px;
     line-height: 22px;
     letter-spacing: -0.007em;
-    color: #475569;
+    color: var(--muted-text-color);
 
     transition: color 0.1s ease;
 
     cursor: pointer;
 }
 .active-button {
-    color: #1e293b !important;
+    color: var(--text-color) !important;
 }
 .active-underline {
     position: absolute;
@@ -147,7 +147,7 @@
     line-height: 24px;
     letter-spacing: -0.008em;
 
-    color: #1e293b;
+    color: var(--text-color);
 
     flex: none;
     order: 0;
@@ -186,14 +186,14 @@
     line-height: 22px;
     letter-spacing: -0.007em;
     text-align: unset;
-    color: #1e293b;
+    color: var(--text-color);
 
     transition: background-color 0.2s ease;
 
     cursor: pointer;
 }
 .model-button-active {
-    background-color: #eef2ff;
+    background-color: var(--active-btn-bg);
 }
 .active-sideline {
     position: absolute;

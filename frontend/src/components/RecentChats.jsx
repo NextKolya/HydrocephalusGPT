@@ -26,13 +26,16 @@ export default function RecentChats() {
     useEffect(() => {
         const recentChatButton = recentButtonsRef.current[currentChat?.id];
 
-        if (sidelineRef.current && recentChatButton) {
-            sidelineRef.current.style.height = `${recentChatButton.offsetHeight}px`;
-            sidelineRef.current.style.top = `${recentChatButton.offsetTop}px`;
+        if (sidelineRef.current) {
+            if (recentChatButton && chats.length) {
+                sidelineRef.current.style.height = `${recentChatButton.offsetHeight}px`;
+                sidelineRef.current.style.top = `${recentChatButton.offsetTop}px`;
+            } else {
+                sidelineRef.current.style.height = '0';
+            }
         }
-
-        console.log(currentChat);
-    }, [currentChat]);
+        // console.log(currentChat);
+    }, [currentChat, chats]);
 
     const createChat = useChatStore((state) => state.createChat);
     const deleteChat = useChatStore((state) => state.deleteChat);
@@ -55,6 +58,18 @@ export default function RecentChats() {
             titleInputRef.current.focus();
         }
     }, [isEditing]);
+
+    const showChatsRef = useRef(null);
+    useEffect(() => {
+        if (showChatsRef.current) {
+            if (showChats) {
+                showChatsRef.current.style.transform = `rotate(180deg)`;
+            } else {
+                showChatsRef.current.style.transform = '';
+            }
+        }
+    }, [showChats]);
+
     return (
         <div className={recentChats['recent-chats']}>
             <div className={recentChats['title-block']}>
@@ -71,11 +86,15 @@ export default function RecentChats() {
                                 id: crypto.randomUUID(),
                                 messages: [],
                             };
-                            createChat(newChat);
+                            if (chats.length >= 3) return;
+                            if (showChats) {
+                                createChat(newChat);
+                            }
                             setCurrentChat(newChat);
                         }}
                     />
                     <img
+                        ref={showChatsRef}
                         src='/accordion-icon.svg'
                         alt=''
                         onClick={() => setShowChats((prev) => !prev)}

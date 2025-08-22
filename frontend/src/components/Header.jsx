@@ -1,9 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect, use } from 'react';
 
 import header from './styles/Header.module.css';
 
 export default function Header() {
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState(() => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) return savedTheme;
+
+        const prefersDark = window.matchMedia(
+            '(prefers-color-scheme: dark)'
+        ).matches;
+        return prefersDark ? 'dark' : 'light';
+    });
+
+    useEffect(() => {
+        document.body.classList.remove('light', 'dark');
+        document.body.classList.add(theme);
+
+        localStorage.setItem('theme', theme);
+    }, [theme]);
 
     return (
         <div className={header.header}>

@@ -21,9 +21,9 @@
     padding: 12px;
     padding-left: 56px;
 
-    background-color: #ffffff;
+    background-color: var(--bg-color);
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--input-border-color);
     border-radius: 60px;
     box-sizing: border-box;
     outline: none;
@@ -39,7 +39,7 @@
     font-size: 16px;
     line-height: 22px;
     letter-spacing: -0.007em;
-    color: #475569;
+    color: var(--muted-text-color);
 }
 .message-input-container > span {
     width: 808px;

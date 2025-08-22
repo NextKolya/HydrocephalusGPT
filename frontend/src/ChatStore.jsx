@@ -2,12 +2,11 @@ import { create } from 'zustand';
 
 const useChatStore = create((set) => ({
     chats: [
-        // TEST chat
+        //* TEST chat
         // { id: crypto.randomUUID(), title: 'test chat', messages: [] }
     ],
     createChat: (newChat) => {
         set((state) => {
-            if (state.chats.length >= 3) return {};
             return {
                 chats: [...state.chats, newChat],
                 currentChatId: newChat.id,
@@ -16,7 +15,7 @@ const useChatStore = create((set) => ({
     },
     deleteChat: (chatId) => {
         set((state) => ({
-            chats: state.chats.filter((chat) => chat.id !== chatId),
+            chats: state.chats.filter((chat) => chatId !== chat.id),
         }));
     },
     editChatTitle: (chatId, newTitle) => {
