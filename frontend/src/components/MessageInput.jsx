@@ -24,7 +24,8 @@ export default function MessageInput() {
                     onChange={(e) => setQuestion(e.target.value)}
                     onKeyDown={(e) => {
                         if (e.key === 'Enter') {
-                            sendMessage(question, setQuestion);
+                            sendMessage(question);
+                            setQuestion('');
                         }
                     }}
                 />
@@ -46,7 +47,10 @@ export default function MessageInput() {
                                 ? messageInput['send-button']
                                 : `${messageInput['send-button']} ${messageInput['send-button-disabled']}`
                         }
-                        onClick={() => sendMessage(question, setQuestion)}
+                        onClick={() => {
+                            sendMessage(question);
+                            setQuestion('');
+                        }}
                     >
                         <img src='top-arrow-icon.svg' alt='send' />
                     </button>
