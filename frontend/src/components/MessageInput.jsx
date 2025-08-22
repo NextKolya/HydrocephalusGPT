@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import useChatStore from '../ChatStore';
+import { useSendMessage } from '../hooks/useSendMessage';
 
 import messageInput from './styles/MessageInput.module.css';
 
@@ -11,52 +12,7 @@ export default function MessageInput() {
     const currentChatId = useChatStore((state) => state.currentChatId);
     const currentChat = chats.find((chat) => chat.id === currentChatId);
 
-    const addMessage = useChatStore((state) => state.addMessage);
-    const updateAnswer = useChatStore((state) => state.updateAnswer);
-    const setCurrentMessage = useChatStore((state) => state.setCurrentMessage);
-
-    async function getAIresponse(prompt) {
-        const local_server = 'http://localhost:3000/responses';
-        const render_com_server =
-            'https://hydrocephalusgpt.onrender.com/responses';
-
-        try {
-            const response = await fetch(render_com_server, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ prompt: prompt }),
-            });
-
-            const aiAnswer = await response.json();
-            return aiAnswer.answer;
-        } catch (error) {
-            console.error('Fetch AI response error: ', error);
-            return 'Error connecting to AI api server';
-        }
-    }
-
-    async function sendMessage() {
-        if (!currentChatId || !currentChat?.id || !question) return;
-
-        const now = new Date();
-        const newMessage = {
-            id: crypto.randomUUID(),
-            question: question,
-            answer: 'generating',
-            messageTime: `${now.getHours()}:${now.getMinutes()}`,
-        };
-
-        addMessage(currentChat.id, newMessage);
-        setCurrentMessage(newMessage);
-
-        setQuestion('');
-
-        getAIresponse(question).then((ai_answer) =>
-            updateAnswer(currentChat.id, ai_answer)
-        );
-    }
+    const { sendMessage, loading } = useSendMessage();
 
     return (
         <div className={messageInput['message-input-container']}>
@@ -68,7 +24,7 @@ export default function MessageInput() {
                     onChange={(e) => setQuestion(e.target.value)}
                     onKeyDown={(e) => {
                         if (e.key === 'Enter') {
-                            sendMessage();
+                            sendMessage(question, setQuestion);
                         }
                     }}
                 />
@@ -86,11 +42,11 @@ export default function MessageInput() {
 
                     <button
                         className={
-                            currentChat && question
+                            currentChat && question && !loading
                                 ? messageInput['send-button']
                                 : `${messageInput['send-button']} ${messageInput['send-button-disabled']}`
                         }
-                        onClick={sendMessage}
+                        onClick={() => sendMessage(question, setQuestion)}
                     >
                         <img src='top-arrow-icon.svg' alt='send' />
                     </button>
