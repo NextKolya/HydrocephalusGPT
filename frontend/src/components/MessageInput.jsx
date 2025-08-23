@@ -12,7 +12,7 @@ export default function MessageInput() {
     const currentChatId = useChatStore((state) => state.currentChatId);
     const currentChat = chats.find((chat) => chat.id === currentChatId);
 
-    const { sendMessage, loading } = useSendMessage();
+    const { sendMessage, isLoading } = useSendMessage();
 
     return (
         <div className={messageInput['message-input-container']}>
@@ -43,7 +43,7 @@ export default function MessageInput() {
 
                     <button
                         className={
-                            currentChat && question && !loading
+                            currentChat && question && !isLoading
                                 ? messageInput['send-button']
                                 : `${messageInput['send-button']} ${messageInput['send-button-disabled']}`
                         }

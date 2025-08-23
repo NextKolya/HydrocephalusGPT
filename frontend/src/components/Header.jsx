@@ -25,7 +25,6 @@ export default function Header() {
             <div className={header['title-block']}>
                 <span>Hydrocephalus GPT</span>
             </div>
-
             <div className={header['theme-block']}>
                 <button
                     onClick={() => setTheme('light')}
@@ -61,7 +60,6 @@ export default function Header() {
                     />
                 </button>
             </div>
-
             <div className={header['tools-block']}>
                 <button>
                     <img

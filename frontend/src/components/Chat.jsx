@@ -5,6 +5,7 @@ import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import useChatStore from '../ChatStore';
 
 import MessageInput from './MessageInput';
+import AnswerLoading from './AnswerLoading';
 
 import chatStyles from './styles/Chat.module.css';
 
@@ -12,8 +13,6 @@ export default function Chat() {
     const chats = useChatStore((state) => state.chats);
     const currentChatId = useChatStore((state) => state.currentChatId);
     const currentChat = chats.find((chat) => chat.id === currentChatId);
-
-    // const now = new Date();
 
     return (
         <>
@@ -37,7 +36,6 @@ export default function Chat() {
                                     <span
                                         className={chatStyles['question-time']}
                                     >
-                                        {/* {now.getHours()}:{now.getMinutes()} */}
                                         {message.messageTime}
                                     </span>
                                 </div>
@@ -48,48 +46,63 @@ export default function Chat() {
                                     <span>RG</span>
                                 </div>
                                 <div className={chatStyles['answer-content']}>
-                                    <ReactMarkdown
-                                        components={{
-                                            code({
-                                                node,
-                                                inline,
-                                                className,
-                                                children,
-                                                ...props
-                                            }) {
-                                                const match =
-                                                    /language-(\w+)/.exec(
-                                                        className || ''
+                                    {message?.isLoading ? (
+                                        <AnswerLoading />
+                                    ) : (
+                                        <ReactMarkdown
+                                            components={{
+                                                code({
+                                                    node,
+                                                    inline,
+                                                    className,
+                                                    children,
+                                                    ...props
+                                                }) {
+                                                    const match =
+                                                        /language-(\w+)/.exec(
+                                                            className || ''
+                                                        );
+                                                    return !inline && match ? (
+                                                        <SyntaxHighlighter
+                                                            style={oneDark}
+                                                            children={String(
+                                                                children
+                                                            ).replace(
+                                                                /\n$/,
+                                                                ''
+                                                            )}
+                                                            language={
+                                                                match
+                                                                    ? match[1]
+                                                                    : 'plain-text'
+                                                            }
+                                                            {...props}
+                                                        />
+                                                    ) : (
+                                                        <code
+                                                            className={
+                                                                className
+                                                            }
+                                                            {...props}
+                                                        >
+                                                            {children}
+                                                        </code>
                                                     );
-                                                return !inline && match ? (
-                                                    <SyntaxHighlighter
-                                                        style={oneDark}
-                                                        children={String(
-                                                            children
-                                                        ).replace(/\n$/, '')}
-                                                        language={
-                                                            match
-                                                                ? match[1]
-                                                                : 'plain-text'
-                                                        }
-                                                        {...props}
-                                                    />
-                                                ) : (
-                                                    <code
-                                                        className={className}
-                                                        {...props}
-                                                    >
-                                                        {children}
-                                                    </code>
-                                                );
-                                            },
+                                                },
+                                            }}
+                                        >
+                                            {message.answer}
+                                        </ReactMarkdown>
+                                    )}
+
+                                    <span
+                                        className={chatStyles['answer-time']}
+                                        style={{
+                                            visibility: message?.isLoading
+                                                ? 'hidden'
+                                                : '',
                                         }}
                                     >
-                                        {message.answer}
-                                    </ReactMarkdown>
-
-                                    <span className={chatStyles['answer-time']}>
-                                        {/* {now.getHours()}:{now.getMinutes()} */}
                                         {message.messageTime}
                                     </span>
                                 </div>

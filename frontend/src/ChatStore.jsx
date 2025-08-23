@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 
 const useChatStore = create(
     persist(
-        (set, get) => ({
+        (set) => ({
             chats: [
                 //* TEST chat
                 // { id: crypto.randomUUID(), title: 'test chat', messages: [] }
@@ -67,7 +67,9 @@ const useChatStore = create(
                                           message.id === state.currentMessage.id
                                               ? {
                                                     ...message,
-                                                    answer: newAnswerContent,
+                                                    isLoading:
+                                                        newAnswerContent.isLoading,
+                                                    answer: newAnswerContent.answer,
                                                 }
                                               : message
                                       ),

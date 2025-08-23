@@ -4,35 +4,36 @@ import useChatStore from '../ChatStore';
 
 import { formatTime } from '../utils/formatTime';
 
-const local_server = 'http://localhost:3000/responses';
-const render_com_server = 'https://hydrocephalusgpt.onrender.com/responses';
+// AI api urls
+const local_server = 'http://localhost:3000/responses'; //* for local test
+const render_com_server = 'https://hydrocephalusgpt.onrender.com/responses'; //* for deploy
 
 export function useSendMessage() {
-    const chats = useChatStore((state) => state.chats);
     const currentChatId = useChatStore((state) => state.currentChatId);
-    // const currentChat = chats.find((chat) => chat.id === currentChatId);
 
     const addMessage = useChatStore((state) => state.addMessage);
     const updateAnswer = useChatStore((state) => state.updateAnswer);
     const setCurrentMessage = useChatStore((state) => state.setCurrentMessage);
 
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     async function sendMessage(question) {
-        if (!currentChatId || !question || loading) return;
+        if (!currentChatId || !question || isLoading) return;
 
         const now = new Date();
         const newMessage = {
             id: crypto.randomUUID(),
             question: question,
-            answer: 'generating',
+            answer: '',
+            isLoading: true,
             messageTime: formatTime(now),
         };
 
         addMessage(currentChatId, newMessage);
         setCurrentMessage(newMessage);
 
-        setLoading(true);
+        setIsLoading(true);
+
         try {
             const response = await fetch(render_com_server, {
                 method: 'POST',
@@ -43,14 +44,17 @@ export function useSendMessage() {
             });
             const aiAnswer = await response.json();
 
-            updateAnswer(currentChatId, aiAnswer.answer);
+            updateAnswer(currentChatId, {
+                isLoading: false,
+                answer: aiAnswer.answer,
+            });
         } catch (error) {
             console.error('Fetch AI response error: ', error);
             return 'Error connecting to AI api server';
         } finally {
-            setLoading(false);
+            setIsLoading(false);
         }
     }
 
-    return { sendMessage, loading };
+    return { sendMessage, isLoading };
 }
