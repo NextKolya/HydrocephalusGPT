@@ -1,6 +1,5 @@
 body {
-    height: 100%;
-    max-height: 100vh;
+    height: 100vh;
     margin: 0;
 
     background-color: var(--bg-color);
@@ -22,6 +21,7 @@ body {
     flex: 1;
 
     min-width: 700px;
+    height: 100vh;
 
     background-color: var(--main-content-bg-color);
 }
