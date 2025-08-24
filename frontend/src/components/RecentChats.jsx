@@ -34,7 +34,6 @@ export default function RecentChats() {
                 sidelineRef.current.style.height = '0';
             }
         }
-        // console.log(currentChat);
     }, [currentChat, chats]);
 
     const createChat = useChatStore((state) => state.createChat);
@@ -193,6 +192,7 @@ export default function RecentChats() {
                                             }
                                         >
                                             2m ago
+                                            {/* {chat.messages.at(-1).messageTime} */}
                                         </span>
                                     )}
                                 </motion.button>
