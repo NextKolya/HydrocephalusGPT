@@ -4,6 +4,8 @@ import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import useChatStore from '../ChatStore';
 
+import { formatTime } from '../utils/formatTime';
+
 import MessageInput from './MessageInput';
 import AnswerLoading from './AnswerLoading';
 
@@ -36,7 +38,7 @@ export default function Chat() {
                                     <span
                                         className={chatStyles['question-time']}
                                     >
-                                        {message.messageTime}
+                                        {formatTime(message.messageTime)}
                                     </span>
                                 </div>
                             </div>
@@ -103,7 +105,7 @@ export default function Chat() {
                                                 : '',
                                         }}
                                     >
-                                        {message.messageTime}
+                                        {formatTime(message.messageTime)}
                                     </span>
                                 </div>
                             </div>

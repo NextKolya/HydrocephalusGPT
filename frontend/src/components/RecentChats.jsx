@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 
 import useChatStore from '../ChatStore';
 
+import { calcTimeAgo } from '../utils/formatTime';
+
 import { AnimatePresence, motion } from 'framer-motion';
 import recentChats from './styles/RecentChats.module.css';
 
@@ -68,6 +70,8 @@ export default function RecentChats() {
             }
         }
     }, [showChats]);
+
+    const currentDate = new Date();
 
     return (
         <div className={recentChats['recent-chats']}>
@@ -191,8 +195,11 @@ export default function RecentChats() {
                                                 recentChats['recent-chat-time']
                                             }
                                         >
-                                            2m ago
-                                            {/* {chat.messages.at(-1).messageTime} */}
+                                            {calcTimeAgo(
+                                                currentDate,
+                                                chat.messages.at(-1)
+                                                    ?.messageTime
+                                            ) || 'now'}
                                         </span>
                                     )}
                                 </motion.button>

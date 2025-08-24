@@ -2,8 +2,6 @@ import { useState } from 'react';
 
 import useChatStore from '../ChatStore';
 
-import { formatTime } from '../utils/formatTime';
-
 // AI api urls
 const local_server = 'http://localhost:3000/responses'; //* for local test (nodemon)
 const render_com_server = 'https://hydrocephalusgpt.onrender.com/responses'; //* for deploy (render.com)
@@ -26,7 +24,7 @@ export function useSendMessage() {
             question: question,
             answer: '',
             isLoading: true,
-            messageTime: formatTime(now),
+            messageTime: now,
         };
 
         addMessage(currentChatId, newMessage);
