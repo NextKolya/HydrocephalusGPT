@@ -1,7 +1,7 @@
 # 🧠 HydrocephalusGPT
 Project without practice benefit, just  [Gemini 2.5 Flash](https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash) visual realization.
 
-**[Open project online](https://hgpt.netlify.app/)** 
+<a href="https://hgpt.netlify.app/" target="_blank">**Open project online**</a>
 
 Frontend is deploying on &nbsp; [![netlify](https://img.shields.io/badge/-netlify-aqua?style=for-the-badge&logo=netlify&logoColor=black)](https://app.netlify.com/)
 
