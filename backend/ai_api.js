@@ -18,7 +18,7 @@ app.post('/responses', async (req, res) => {
             model: 'gemini-2.5-flash',
             contents: `Answer with Markdown, without HTML. Always use fenced code blocks with a language, for example:
                 \`\`\`python
-                print("Hello, world!")
+                    print("Hello, world!")
                 \`\`\`
                 Now answer the question:\n ${req.body.prompt}`,
             config: {
