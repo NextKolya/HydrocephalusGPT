@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react';
+
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -16,11 +18,18 @@ export default function Chat() {
     const currentChatId = useChatStore((state) => state.currentChatId);
     const currentChat = chats.find((chat) => chat.id === currentChatId);
 
+    const lastAnswerRef = useRef(null);
+    useEffect(() => {
+        if (lastAnswerRef.current) {
+            lastAnswerRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [currentChat, currentChat?.messages]);
+
     return (
         <>
             <div className={chatStyles.chat}>
                 <div className={chatStyles.messages}>
-                    {currentChat?.messages?.map((message) => (
+                    {currentChat?.messages?.map((message, index) => (
                         <div
                             className={chatStyles['message-container']}
                             key={message.id}
@@ -95,6 +104,10 @@ export default function Chat() {
                                         >
                                             {message.answer}
                                         </ReactMarkdown>
+                                    )}
+                                    {index ===
+                                        currentChat.messages.length - 1 && (
+                                        <div ref={lastAnswerRef} />
                                     )}
 
                                     <span
