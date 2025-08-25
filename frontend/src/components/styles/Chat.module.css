@@ -9,10 +9,11 @@
 
 .messages {
     display: flex;
+
     flex-direction: column;
+
     gap: 12px;
 
-    /* height: 423.2px; */
     padding: 32px 96px;
 
     flex: 1;
@@ -56,7 +57,7 @@
     letter-spacing: -0.006em;
 
     min-width: 40px;
-    max-width: 552px;
+    max-width: 752px;
     padding: 12px;
 
     border-radius: 16px;

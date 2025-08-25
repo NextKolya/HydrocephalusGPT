@@ -6,8 +6,10 @@ const timeFormatter = new Intl.DateTimeFormat('ru-RU', {
 
 export function formatTime(date) {
     if (!(date instanceof Date)) {
-        console.error('date in formatTime is not Date prototype: ', date);
-        return null;
+        // console.error(
+        //     `date in formatTime is not Date prototype:  ${date};   type: ${typeof date}`
+        // );
+        date = new Date(date);
     }
     return timeFormatter.format(date);
 }
