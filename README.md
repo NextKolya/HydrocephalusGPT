@@ -1,11 +1,13 @@
 # 🧠 HydrocephalusGPT
-Project without practice benefit, just  ![Gemini 2.5 Flash](https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash) visual realization.
+Project without practice benefit, just  [Gemini 2.5 Flash](https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash) visual realization.
 
-Site build
+**[Open project online](https://hgpt.netlify.app/)** 
 
 Frontend is deploying on &nbsp; [![netlify](https://img.shields.io/badge/-netlify-aqua?style=for-the-badge&logo=netlify&logoColor=black)](https://app.netlify.com/)
 
 Backend is deploying on  &nbsp;&nbsp; [![render.com](https://img.shields.io/badge/render.com-black)](https://render.com/)
+ 
+
 
 ### 📂 Project Structure 
 ```bash
