@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
-import useSidebarStore from '../SidebarStore';
+import useSidebarStore from '../stores/SidebarStore';
 
 import sidebar from './styles/Sidebar.module.css';
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import useChatStore from '../ChatStore';
+import useChatStore from '../stores/ChatStore';
 import { useSendMessage } from '../hooks/useSendMessage';
 
 import messageInput from './styles/MessageInput.module.css';

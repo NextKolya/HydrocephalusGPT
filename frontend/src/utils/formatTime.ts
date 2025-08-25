@@ -4,7 +4,7 @@ const timeFormatter = new Intl.DateTimeFormat('ru-RU', {
     minute: '2-digit',
 });
 
-export function formatTime(date) {
+export function formatTime(date: Date) {
     if (!(date instanceof Date)) {
         // console.error(
         //     `date in formatTime is not Date prototype:  ${date};   type: ${typeof date}`
@@ -14,7 +14,12 @@ export function formatTime(date) {
     return timeFormatter.format(date);
 }
 
-export function calcTimeAgo(currentDate, time) {
+export function calcTimeAgo(
+    currentDate: Date | string,
+    time?: Date | string
+): string {
+    if (!time) return 'now';
+
     if (!(currentDate instanceof Date)) {
         currentDate = new Date(currentDate);
     }
@@ -22,8 +27,8 @@ export function calcTimeAgo(currentDate, time) {
         time = new Date(time);
     }
 
-    const diffMs = currentDate.getTime() - time.getTime();
-    const diffSec = Math.floor(diffMs / 1000);
+    const diffMs: number = currentDate.getTime() - time.getTime();
+    const diffSec: number = Math.floor(diffMs / 1000);
 
     if (!diffSec || diffSec < 60) return 'now';
     if (diffSec < 3600) return `${Math.floor(diffSec / 60)}m ago`;

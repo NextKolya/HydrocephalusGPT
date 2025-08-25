@@ -1,4 +1,4 @@
-import useSidebarStore from '../SidebarStore';
+import useSidebarStore from '../stores/SidebarStore';
 import ToolsButtons from './ToolsButtons';
 
 import ModelButtons from './ModelButtons';

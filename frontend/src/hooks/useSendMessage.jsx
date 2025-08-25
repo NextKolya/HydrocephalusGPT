@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import useChatStore from '../ChatStore';
+import useChatStore from '../stores/ChatStore';
 
 // AI api urls
 const local_server = 'http://localhost:3000/responses'; //* for local test (nodemon)

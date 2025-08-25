@@ -1,7 +1,9 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-const useChatStore = create(
+import { ChatStore } from './chatStore.types';
+
+const useChatStore = create<ChatStore>()(
     persist(
         (set) => ({
             chats: [
@@ -24,7 +26,9 @@ const useChatStore = create(
             editChatTitle: (chatId, newTitle) => {
                 set((state) => ({
                     chats: state.chats.map((chat) =>
-                        chat.id === chatId ? { ...chat, title: newTitle } : chat
+                        chat.id === chatId
+                            ? { ...chat, title: newTitle || chat.title }
+                            : chat
                     ),
                 }));
             },
@@ -52,11 +56,11 @@ const useChatStore = create(
             },
             currentMessage: null,
             setCurrentMessage: (message) => {
-                set(() => ({ currentMessage: message ?? null }));
+                set(() => ({ currentMessage: message }));
             },
             updateAnswer: (chatId, newAnswerContent) => {
                 set((state) => {
-                    if (!state.currentMessage) return;
+                    if (!state.currentMessage) return state;
 
                     return {
                         chats: state.chats.map((chat) =>
@@ -64,7 +68,8 @@ const useChatStore = create(
                                 ? {
                                       ...chat,
                                       messages: chat.messages.map((message) =>
-                                          message.id === state.currentMessage.id
+                                          message.id ===
+                                          state.currentMessage?.id
                                               ? {
                                                     ...message,
                                                     isLoading:
@@ -78,7 +83,8 @@ const useChatStore = create(
                         ),
                         currentMessage: {
                             ...state.currentMessage,
-                            answer: newAnswerContent,
+                            isLoading: newAnswerContent.isLoading,
+                            answer: newAnswerContent.answer,
                         },
                     };
                 });

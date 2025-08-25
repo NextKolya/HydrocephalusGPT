@@ -7,14 +7,17 @@ body {
 
 @font-face {
     font-family: 'Plus Jakarta Sans';
+
     font-style: normal;
     font-weight: 400;
+
     src: url('/fonts/PlusJakartaSans.ttf') format('truetype');
 }
 
 #root {
     display: flex;
 }
+
 .main-content {
     display: flex;
     flex-direction: column;
