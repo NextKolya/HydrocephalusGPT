@@ -1,6 +1,6 @@
 # 🧠 HydrocephalusGPT
 
-Project without practice benefit, just  [Gemini 2.5 Flash](https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash) visual realization.
+Project without <u>practical benefits</u>, just  [Gemini 2.5 Flash](https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash) visual realization.
 
 <a href="https://hgpt.netlify.app/" target="_blank">**Open project online**</a>
 
