@@ -21,10 +21,12 @@ jobs:
                   node-version: 18
 
             - name: Install dependencies
+              working-directory: frontend
               run: npm install
 
             - name: Run Linter
               run: npx eslint src/**/*.ts src/**/*.tsx src/**/*.js src/**/*.jsx
 
             - name: Run tests
+              working-directory: frontend
               run: npm run test
