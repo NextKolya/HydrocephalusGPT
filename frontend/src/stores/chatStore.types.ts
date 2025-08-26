@@ -9,7 +9,7 @@ export type Message = {
     question: string;
     answer: string;
     isLoading: boolean;
-    messageTime: Date;
+    messageTime: Date | string;
 };
 
 type NewAnswerContent = {

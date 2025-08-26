@@ -4,11 +4,12 @@ const timeFormatter = new Intl.DateTimeFormat('ru-RU', {
     minute: '2-digit',
 });
 
-export function formatTime(date: Date) {
+export function formatTime(date: Date | string) {
     if (!(date instanceof Date)) {
         // console.error(
         //     `date in formatTime is not Date prototype:  ${date};   type: ${typeof date}`
         // );
+
         date = new Date(date);
     }
     return timeFormatter.format(date);
