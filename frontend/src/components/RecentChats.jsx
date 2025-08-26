@@ -4,7 +4,7 @@ import useChatStore from '../stores/ChatStore';
 
 import RecentChatsList from './RecentChatsList';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import recentChats from './styles/RecentChats.module.css';
 
 export default function RecentChats() {

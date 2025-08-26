@@ -63,7 +63,6 @@ export default function Chat() {
                                         <ReactMarkdown
                                             components={{
                                                 code({
-                                                    node,
                                                     inline,
                                                     className,
                                                     children,

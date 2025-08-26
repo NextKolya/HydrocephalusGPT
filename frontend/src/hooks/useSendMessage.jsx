@@ -3,8 +3,8 @@ import { useState } from 'react';
 import useChatStore from '../stores/ChatStore';
 
 // AI api urls
-const local_server = 'http://localhost:3000/responses'; //* for local test (nodemon)
-const render_com_server = 'https://hydrocephalusgpt.onrender.com/responses'; //* for deploy (render.com)
+const _local_server = 'http://localhost:3000/responses'; //* for local test (nodemon)
+const _render_com_server = 'https://hydrocephalusgpt.onrender.com/responses'; //* for deploy (render.com)
 
 export function useSendMessage() {
     const currentChatId = useChatStore((state) => state.currentChatId);
