@@ -40,7 +40,7 @@ Backend is deploying on  &nbsp;&nbsp; [![render.com](https://img.shields.io/badg
 
 ### 🛠 Installing
 ```bash
-git clone https://github.com/NextKolya/HydrocephalusGPT
+git clone https://github.com/a-marigold/HydrocephalusGPT
 cd HydrocephalusGPT
 ```
 **Dependencies**
