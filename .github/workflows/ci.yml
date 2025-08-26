@@ -25,7 +25,8 @@ jobs:
               run: npm install
 
             - name: Run Linter
-              run: npx eslint src/**/*.ts src/**/*.tsx src/**/*.js src/**/*.jsx
+              working-directory: frontend
+              run: npx eslint "src/**/*.{ts,tsx,js,jsx}"
 
             - name: Run tests
               working-directory: frontend
