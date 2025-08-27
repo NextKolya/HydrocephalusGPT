@@ -16,10 +16,12 @@ app.post('/responses', async (req, res) => {
     try {
         const response = await ai.models.generateContent({
             model: 'gemini-2.5-flash',
-            contents: `Answer with Markdown, without HTML. Always use fenced code blocks with a language, for example:
+            contents: `Answer with Markdown, without HTML.
+                If the user explicitly asks for programming or code - use fenced code blocks with a language, for example:
                 \`\`\`python
                     print("Hello, world!")
                 \`\`\`
+                If the user sends a normal message, does not asks for code or programmig - do not use fenced code blocks if do not need in case
                 Now answer the question:\n ${req.body.prompt}`,
             config: {
                 thinkingConfig: {
