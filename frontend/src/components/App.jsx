@@ -18,15 +18,9 @@ export default function App() {
                 <Header />
 
                 <Routes>
-                    <Route
-                        path='/'
-                        element={<Navigate to='/chat' replace />}
-                    ></Route>
-                    <Route path='/chat' element={<Chat />}></Route>
-                    <Route
-                        path='/chat/:currentChatId'
-                        element={<Chat />}
-                    ></Route>
+                    <Route path='/' element={<Navigate to='/chat' replace />} />
+                    <Route path='/chat' element={<Chat />} />
+                    <Route path='/chat/:currentChatId' element={<Chat />} />
                 </Routes>
             </div>
 
