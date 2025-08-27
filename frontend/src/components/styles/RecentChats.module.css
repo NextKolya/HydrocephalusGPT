@@ -51,6 +51,9 @@
     flex-direction: column;
     overflow: auto;
 }
+a {
+    text-decoration: none;
+}
 .recent-chat {
     display: flex;
     align-items: center;

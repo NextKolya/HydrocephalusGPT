@@ -23,6 +23,10 @@ export default function App() {
                         element={<Navigate to='/chat' replace />}
                     ></Route>
                     <Route path='/chat' element={<Chat />}></Route>
+                    <Route
+                        path='/chat/:currentChatId'
+                        element={<Chat />}
+                    ></Route>
                 </Routes>
             </div>
 

@@ -31,14 +31,14 @@ export default function MessageInput() {
                 />
 
                 <img
-                    src='clip-icon.svg'
+                    src='/clip-icon.svg'
                     alt='clip'
                     className={messageInput['clip-icon']}
                 />
 
                 <div className={messageInput['send-buttons-container']}>
                     <button className={messageInput['voice-button']}>
-                        <img src='voice-button.svg' alt='voice' />
+                        <img src='/voice-button.svg' alt='voice' />
                     </button>
 
                     <button
@@ -52,7 +52,7 @@ export default function MessageInput() {
                             setQuestion('');
                         }}
                     >
-                        <img src='top-arrow-icon.svg' alt='send' />
+                        <img src='/top-arrow-icon.svg' alt='send' />
                     </button>
                 </div>
             </div>

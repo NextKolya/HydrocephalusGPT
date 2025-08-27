@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import useChatStore from '../stores/ChatStore';
 
@@ -16,6 +17,7 @@ export default function RecentChats() {
     const [showChats, setShowChats] = useState(true);
 
     const createChat = useChatStore((state) => state.createChat);
+    const navigate = useNavigate();
 
     const showChatsRef = useRef(null);
     useEffect(() => {
@@ -34,21 +36,22 @@ export default function RecentChats() {
                 <span>Recent Chats</span>
                 <div>
                     <img
-                        src='plus-icon.svg'
+                        src='/plus-icon.svg'
                         alt='add new chat'
                         onClick={() => {
                             const newChat = {
+                                id: crypto.randomUUID(),
                                 title: `New Chat ${
                                     chats.length >= 1 ? `(${chats.length})` : ''
                                 }`,
-                                id: crypto.randomUUID(),
                                 messages: [],
                             };
                             if (chats.length >= 3) return;
                             if (showChats) {
                                 createChat(newChat);
+                                setCurrentChat(newChat);
+                                navigate(`/chat/${newChat.id}`);
                             }
-                            setCurrentChat(newChat);
                         }}
                     />
                     <img

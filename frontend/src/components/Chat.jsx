@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -14,8 +15,9 @@ import AnswerLoading from './AnswerLoading';
 import chatStyles from './styles/Chat.module.css';
 
 export default function Chat() {
+    const { currentChatId } = useParams();
+
     const chats = useChatStore((state) => state.chats);
-    const currentChatId = useChatStore((state) => state.currentChatId);
     const currentChat = chats.find((chat) => chat.id === currentChatId);
 
     const lastAnswerRef = useRef(null);

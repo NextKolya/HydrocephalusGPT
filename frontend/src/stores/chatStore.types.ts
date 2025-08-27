@@ -25,7 +25,7 @@ export interface ChatStore {
     editChatTitle: (chatId: string, newTitle: string) => void;
 
     currentChatId: string | null;
-    setCurrentChat: (chat: Chat) => void;
+    setCurrentChat: (chat: Chat | null) => void;
 
     currentMessage: Message | null;
     setCurrentMessage: (message: Message | null) => void;

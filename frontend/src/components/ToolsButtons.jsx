@@ -25,9 +25,9 @@ export default function ToolsButtons() {
             {toolsButtons.map((toolButton) => (
                 <button
                     key={toolButton}
-                    ref={(element) =>
-                        (toolButtonsRef.current[toolButton] = element)
-                    }
+                    ref={(element) => {
+                        toolButtonsRef.current[toolButton] = element;
+                    }}
                     onClick={() => setCurrentTool(toolButton)}
                     className={
                         currentTool === toolButton

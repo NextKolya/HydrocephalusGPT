@@ -19,9 +19,12 @@ const useChatStore = create<ChatStore>()(
                 });
             },
             deleteChat: (chatId) => {
-                set((state) => ({
-                    chats: state.chats.filter((chat) => chatId !== chat.id),
-                }));
+                set((state) => {
+                    return {
+                        chats: state.chats.filter((chat) => chatId !== chat.id),
+                        currentChatId: null,
+                    };
+                });
             },
             editChatTitle: (chatId, newTitle) => {
                 set((state) => ({
@@ -35,7 +38,7 @@ const useChatStore = create<ChatStore>()(
 
             currentChatId: null,
             setCurrentChat: (chat) => {
-                set(() => ({ currentChatId: chat.id }));
+                set(() => ({ currentChatId: chat?.id || null }));
             },
             addMessage: (chatId, message) => {
                 set((state) => ({
