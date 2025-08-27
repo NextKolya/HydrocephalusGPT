@@ -1,20 +1,25 @@
 import { useEffect, useRef } from 'react';
 
-import useSidebarStore from '../stores/SidebarStore';
-
 import sidebar from './styles/Sidebar.module.css';
 
 const toolsButtons = ['Model', 'Profile', 'Payment'];
 
-export default function ToolsButtons() {
-    const { currentTool, setCurrentTool } = useSidebarStore();
-
-    const toolButtonsRef = useRef({});
-    const underlineRef = useRef();
+type ToolsButtonsProps = {
+    currentTool: string;
+    setCurrentTool: (tool: string) => void;
+};
+export default function ToolsButtons({
+    currentTool,
+    setCurrentTool,
+}: ToolsButtonsProps) {
+    const toolButtonsRef = useRef<Record<string, HTMLButtonElement | null>>({});
+    const underlineRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        if (!toolButtonsRef || !underlineRef.current) return;
         const currentToolButton = toolButtonsRef.current[currentTool];
-        if (underlineRef.current) {
+
+        if (currentToolButton) {
             underlineRef.current.style.width = `${currentToolButton.offsetWidth}px`;
             underlineRef.current.style.left = `${currentToolButton.offsetLeft}px`;
         }

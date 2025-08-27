@@ -1,13 +1,19 @@
-import useSidebarStore from '../stores/SidebarStore';
+import { useState } from 'react';
+
 import ToolsButtons from './ToolsButtons';
 
+// @ts-ignore
+
 import ModelButtons from './ModelButtons';
+
+// @ts-ignore
+
 import RecentChats from './RecentChats';
 
 import sidebar from './styles/Sidebar.module.css';
 
 export default function Sidebar() {
-    const { currentTool } = useSidebarStore();
+    const [currentTool, setCurrentTool] = useState('Model');
 
     return (
         <div className={sidebar.sidebar}>
@@ -26,7 +32,10 @@ export default function Sidebar() {
             </div>
 
             <div className={sidebar.tools}>
-                <ToolsButtons />
+                <ToolsButtons
+                    currentTool={currentTool}
+                    setCurrentTool={setCurrentTool}
+                />
 
                 <div className={sidebar['tool-content']}>
                     {currentTool === 'Model' ? <ModelButtons /> : ''}
