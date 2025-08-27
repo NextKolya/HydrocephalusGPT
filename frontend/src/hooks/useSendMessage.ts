@@ -15,7 +15,7 @@ export function useSendMessage() {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    async function sendMessage(question) {
+    async function sendMessage(question: string) {
         if (!currentChatId || !question || isLoading) return;
 
         const now = new Date();
