@@ -19,7 +19,7 @@ Backend is deploying on &nbsp;&nbsp; [![render.com](https://img.shields.io/badge
     └──src/
         │── components/   # React components
         │── hooks/        # Custom hooks
-        └── ...Store.jsx  # Zustand state stores
+        └── ...Store.ts  # Zustand state stores
 ```
 
 ### ⚡️Stack
