@@ -45,8 +45,6 @@
     right: 0;
 }
 .description-container {
-    font-family: 'Plus Jakarta Sans';
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,7 +58,6 @@
     color: var(--text-color);
 }
 .description-container span:nth-child(2) {
-    font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -96,7 +93,6 @@
     border-bottom: 2px solid var(--border-color);
 
     /* Text */
-    font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -140,7 +136,6 @@
     width: 284px;
     height: 24px;
 
-    font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
@@ -179,7 +174,6 @@
     border: unset;
     outline: none;
 
-    font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;

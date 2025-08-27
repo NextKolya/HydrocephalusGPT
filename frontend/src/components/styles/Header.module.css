@@ -14,14 +14,14 @@
 }
 
 .title-block {
-    width: 317.33px;
+    flex: 1;
+    max-width: 317.33px;
     height: 38px;
 }
 .title-block > span {
     width: 194px;
     height: 38px;
 
-    font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 1000;
     font-size: 30px;
@@ -106,7 +106,6 @@
 .download-button > span {
     width: 101px;
     height: 20px;
-    font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
