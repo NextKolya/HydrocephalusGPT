@@ -21,18 +21,23 @@
     overflow-y: auto;
     scrollbar-color: var(--text-color) var(--main-content-bg-color);
 }
+@media (max-width: 800px) {
+    .messages {
+        padding: 32px 20px;
+    }
+}
 .messages::-webkit-scrollbar-thumb {
     background-color: var(--text-color);
 }
 .messages::-webkit-scrollbar-track {
     background-color: var(--main-content-bg-color);
 }
+
 .message-container {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
-
 .question-container,
 .answer-container {
     display: flex;

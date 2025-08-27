@@ -14,6 +14,7 @@ export default function App() {
     return (
         <Router>
             <Navbar />
+
             <div className='main-content'>
                 <Header />
 

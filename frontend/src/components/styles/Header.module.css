@@ -1,10 +1,12 @@
 .header {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 
     width: 100%;
+
     min-height: 88px;
+
     padding: 0 24px;
     box-sizing: border-box;
 
@@ -114,4 +116,19 @@
     color: var(--muted-text-color);
 
     display: block;
+}
+
+@media (max-width: 800px) {
+    .title-block {
+        display: none;
+    }
+    .theme-block {
+        width: auto;
+    }
+}
+
+@media (max-width: 500px) {
+    .download-button {
+        display: none !important;
+    }
 }

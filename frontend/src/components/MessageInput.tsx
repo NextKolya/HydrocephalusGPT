@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import useChatStore from '../stores/ChatStore';
 import { useSendMessage } from '../hooks/useSendMessage';
@@ -14,12 +14,30 @@ export default function MessageInput() {
 
     const { sendMessage, isLoading } = useSendMessage();
 
+    const [inputContent, setInputContent] = useState(
+        window.matchMedia('(max-width: 520px)').matches
+            ? 'Message hGPT...'
+            : 'Message hydrocephalusGPT...'
+    );
+    useEffect(() => {
+        function handleResize() {
+            setInputContent(
+                window.matchMedia('(max-width: 520px)').matches
+                    ? 'Message hGPT...'
+                    : 'Message hydrocephalusGPT...'
+            );
+        }
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <div className={messageInput['message-input-container']}>
             <div className={messageInput['message-input']}>
                 <input
                     type='text'
-                    placeholder='Message hydrocephalusGPT...'
+                    placeholder={inputContent}
                     value={question}
                     onChange={(e) => setQuestion(e.target.value)}
                     onKeyDown={(e) => {
