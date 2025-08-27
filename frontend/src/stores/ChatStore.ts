@@ -97,6 +97,7 @@ const useChatStore = create<ChatStore>()(
             name: 'chat-storage',
             partialize: (state) => ({
                 chats: state.chats,
+                currentChatId: state.currentChatId,
             }),
         }
     )
