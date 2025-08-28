@@ -7,7 +7,7 @@ body {
     background-color: var(--bg-color);
 }
 body * {
-    font-family: 'Plus Jakarta Sans';
+    font-family: 'Plus Jakarta Sans', system-ui;
 }
 
 @font-face {

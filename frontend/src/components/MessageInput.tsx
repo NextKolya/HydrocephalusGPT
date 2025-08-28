@@ -60,7 +60,7 @@ export default function MessageInput() {
 
                     <button
                         className={
-                            currentChat && question && !isLoading
+                            question && !isLoading
                                 ? messageInput['send-button']
                                 : `${messageInput['send-button']} ${messageInput['send-button-disabled']}`
                         }
