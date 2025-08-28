@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import useChatStore from '../stores/ChatStore';
 import { Chat } from '../stores/chatStore.types';
@@ -18,6 +19,8 @@ export function useSendMessage() {
     const setCurrentMessage = useChatStore((state) => state.setCurrentMessage);
 
     const [isLoading, setIsLoading] = useState(false);
+
+    const navigate = useNavigate();
 
     async function sendMessage(
         question: string,
@@ -50,6 +53,8 @@ export function useSendMessage() {
             chatId = newChat.id;
 
             setQuestion('');
+
+            navigate(`/chat/${chatId}`);
         } else {
             addMessage(chatId, newMessage);
             setQuestion('');
