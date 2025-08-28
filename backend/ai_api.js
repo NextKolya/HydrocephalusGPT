@@ -5,14 +5,27 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 const app = express();
-app.use(cors());
+app.use(
+    cors({
+        origin: ['http://localhost:5173/chat', 'https://hgpt.netlify.app'],
+    })
+);
 app.use(express.json());
 
 dotenv.config();
 const geminiApiKey = process.env.GEMINI_API_KEY;
 const ai = new GoogleGenAI({ apiKey: geminiApiKey });
 
-app.post('/responses', async (req, res) => {
+function checkClientApi(req, res, next) {
+    const clientApiKEy = req.headers['c-api-key'];
+
+    if (clientApiKEy !== process.env.CLIENT_API_KEY) {
+        return res.status('401').json({ error: 'Unauthorized' });
+    }
+    next();
+}
+
+app.post('/responses', checkClientApi, async (req, res) => {
     try {
         const response = await ai.models.generateContent({
             model: 'gemini-2.5-flash',
@@ -33,7 +46,7 @@ app.post('/responses', async (req, res) => {
         const text = response.candidates?.[0]?.content?.parts?.[0]?.text || '';
         res.send({ answer: text || 'Error with generating answer' });
     } catch (error) {
-        console.error('Error with generating AI response: ', error);
+        console.error('Error with generating AI answer: ', error);
     }
 });
 

@@ -69,6 +69,7 @@ export function useSendMessage() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'c-api-key': import.meta.env.VITE_CLIENT_API_KEY,
                 },
                 body: JSON.stringify({ prompt: question }),
             });
