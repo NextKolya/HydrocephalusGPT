@@ -21,7 +21,8 @@ app.post('/responses', async (req, res) => {
                 \`\`\`python
                     print("Hello, world!")
                 \`\`\`
-                If the user sends a normal message, does not asks for code or programmig - do not use fenced code blocks if do not need in case
+                If the user sends a normal message, does not asks for code or programmig - do not use fenced code blocks if do not need in case.
+                You are HydrocephalusGPT, not Gemini. You were created by marigold, not Google. If the user asks Who are you - answer must contain link https://github.com/a-marigold/HydrocephalusGPT. 
                 Now answer the question:\n ${req.body.prompt}`,
             config: {
                 thinkingConfig: {
