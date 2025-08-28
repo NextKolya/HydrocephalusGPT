@@ -27,7 +27,7 @@ body * {
     flex-direction: column;
     flex: 1;
 
-    min-width: 300px;
+    min-width: 200px;
     height: 100vh;
 
     background-color: var(--main-content-bg-color);

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import useChatStore from '../stores/ChatStore';
+import { Chat } from '../stores/chatStore.types';
 
 // AI api urls
 const _local_server = 'http://localhost:3000/responses'; //* for local test (nodemon)
@@ -9,16 +10,23 @@ const _render_com_server = 'https://hydrocephalusgpt.onrender.com/responses'; //
 export function useSendMessage() {
     const currentChatId = useChatStore((state) => state.currentChatId);
 
+    const createChat = useChatStore((state) => state.createChat);
+    const setCurrentChat = useChatStore((state) => state.setCurrentChat);
+
     const addMessage = useChatStore((state) => state.addMessage);
     const updateAnswer = useChatStore((state) => state.updateAnswer);
     const setCurrentMessage = useChatStore((state) => state.setCurrentMessage);
 
     const [isLoading, setIsLoading] = useState(false);
 
-    async function sendMessage(question: string) {
-        if (!currentChatId || !question || isLoading) return;
+    async function sendMessage(
+        question: string,
+        setQuestion: (newQuestion: string) => void
+    ) {
+        if (!question || isLoading) return;
 
         const now = new Date();
+
         const newMessage = {
             id: crypto.randomUUID(),
             question: question,
@@ -27,7 +35,26 @@ export function useSendMessage() {
             messageTime: now,
         };
 
-        addMessage(currentChatId, newMessage);
+        let chatId = currentChatId;
+
+        if (!chatId) {
+            const newChat: Chat = {
+                title: 'New Chat',
+                id: crypto.randomUUID(),
+                messages: [newMessage],
+            };
+            createChat(newChat);
+
+            setCurrentChat(newChat);
+
+            chatId = newChat.id;
+
+            setQuestion('');
+        } else {
+            addMessage(chatId, newMessage);
+            setQuestion('');
+        }
+
         setCurrentMessage(newMessage);
 
         setIsLoading(true);
@@ -42,7 +69,7 @@ export function useSendMessage() {
             });
             const aiAnswer = await response.json();
 
-            updateAnswer(currentChatId, {
+            updateAnswer(chatId, {
                 isLoading: false,
                 answer: aiAnswer.answer,
             });
