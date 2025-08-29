@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import ReactMarkdown from 'react-markdown';
 
@@ -22,7 +22,7 @@ type ChatMessageProps = {
     index: number;
 };
 
-export default function ChatMessage({
+export default React.memo(function ChatMessage({
     message,
     currentChat,
     index,
@@ -114,4 +114,4 @@ export default function ChatMessage({
             </div>
         </div>
     );
-}
+});

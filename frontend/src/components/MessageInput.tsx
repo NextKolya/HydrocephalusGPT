@@ -8,10 +8,6 @@ import messageInput from './styles/MessageInput.module.css';
 export default function MessageInput() {
     const [question, setQuestion] = useState('');
 
-    const chats = useChatStore((state) => state.chats);
-    const currentChatId = useChatStore((state) => state.currentChatId);
-    const currentChat = chats.find((chat) => chat.id === currentChatId);
-
     const { sendMessage, isLoading } = useSendMessage();
 
     const [inputContent, setInputContent] = useState(
@@ -38,6 +34,7 @@ export default function MessageInput() {
                 <input
                     type='text'
                     placeholder={inputContent}
+                    aria-label={'Input message for AI'}
                     value={question}
                     onChange={(e) => setQuestion(e.target.value)}
                     onKeyDown={(e) => {
@@ -49,13 +46,13 @@ export default function MessageInput() {
 
                 <img
                     src='/clip-icon.svg'
-                    alt='clip'
+                    alt='Attach file'
                     className={messageInput['clip-icon']}
                 />
 
                 <div className={messageInput['send-buttons-container']}>
                     <button className={messageInput['voice-button']}>
-                        <img src='/voice-button.svg' alt='voice' />
+                        <img src='/voice-button.svg' alt='Voice message' />
                     </button>
 
                     <button
@@ -67,8 +64,9 @@ export default function MessageInput() {
                         onClick={() => {
                             sendMessage(question, setQuestion);
                         }}
+                        aria-label='Send message'
                     >
-                        <img src='/top-arrow-icon.svg' alt='send' />
+                        <img src='/top-arrow-icon.svg' alt='Send message' />
                     </button>
                 </div>
             </div>
