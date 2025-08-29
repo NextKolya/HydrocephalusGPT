@@ -21,7 +21,7 @@ function checkClientApi(req, res, next) {
     const clientApiKEy = req.headers['c-api-key'];
 
     if (clientApiKEy !== process.env.CLIENT_API_KEY) {
-        return res.status('401').json({ error: 'Unauthorized' });
+        return res.status(401).json({ error: 'Unauthorized' });
     }
     next();
 }
@@ -48,6 +48,7 @@ app.post('/responses', checkClientApi, async (req, res) => {
         res.send({ answer: text || 'Error with generating answer' });
     } catch (error) {
         console.error('Error with generating AI answer: ', error);
+        res.status(500);
     }
 });
 

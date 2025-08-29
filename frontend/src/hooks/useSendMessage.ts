@@ -81,7 +81,10 @@ export function useSendMessage() {
             });
         } catch (error) {
             console.error('Fetch AI response error: ', error);
-            return 'Error connecting to AI api server';
+            updateAnswer(chatId, {
+                isLoading: false,
+                answer: 'Error connecting to AI api server.',
+            });
         } finally {
             setIsLoading(false);
         }
