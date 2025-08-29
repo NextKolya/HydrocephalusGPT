@@ -48,7 +48,7 @@ app.post('/responses', checkClientApi, async (req, res) => {
         res.send({ answer: text || 'Error with generating answer' });
     } catch (error) {
         console.error('Error with generating AI answer: ', error);
-        res.status(500);
+        res.status(500).json({ error: 'AI api server error' });
     }
 });
 

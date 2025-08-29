@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import useChatStore from '../stores/ChatStore';
+
 import { ChatStore } from '../stores/chatStore.types';
 
 import RecentChatButton from './RecentChatButton';
@@ -11,7 +12,9 @@ import recentChats from './styles/RecentChats.module.css';
 
 type RecentChatsListProps = Pick<ChatStore, 'chats'>;
 
-export default function RecentChatsList({ chats }: RecentChatsListProps) {
+export default React.memo(function RecentChatsList({
+    chats,
+}: RecentChatsListProps) {
     const currentChatId = useChatStore((state) => state.currentChatId);
 
     const sidelineRef = useRef<HTMLDivElement | null>(null);
@@ -55,4 +58,4 @@ export default function RecentChatsList({ chats }: RecentChatsListProps) {
             ></div>
         </motion.div>
     );
-}
+});
