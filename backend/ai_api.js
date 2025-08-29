@@ -7,7 +7,8 @@ import dotenv from 'dotenv';
 const app = express();
 app.use(
     cors({
-        origin: ['http://localhost:5173/chat', 'https://hgpt.netlify.app'],
+        origin: ['http://localhost:5173', 'https://hgpt.netlify.app'],
+        allowedHeaders: ['Content-Type', 'c-api-key'],
     })
 );
 app.use(express.json());
